@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://britek220.github.io/rent2dubai/sitemap.xml
