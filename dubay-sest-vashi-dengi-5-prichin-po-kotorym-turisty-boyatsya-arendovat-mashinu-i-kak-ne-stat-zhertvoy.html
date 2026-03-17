@@ -117,7 +117,7 @@
   function loadCTABlock() {
     if (loadedCTA) return;
     
-    // Создать стили
+    // Создать стили (ИСПРАВЛЕННЫЕ ДЛЯ МОБАЙЛ)
     var style = document.createElement('style');
     style.textContent = `
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
@@ -171,80 +171,174 @@
   color: #fff;
   font-size: clamp(20px, 4vw, 28px);
   font-weight: 900;
-  line-height: 1.25;
-  margin: 0 0 22px;
+  line-height: 1.3;
+  margin: 0 0 22px 0;
   text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  text-align: center;
 }
 
 .r2d-headline span { color: #FFE066; }
 
 .r2d-benefits {
-  display: flex; flex-wrap: wrap; gap: 10px 20px;
-  margin-bottom: 26px; padding: 0; list-style: none;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 26px;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+  width: 100%;
 }
 
 .r2d-benefits li {
-  display: flex; align-items: center; gap: 8px;
-  color: #fff; font-size: 14px; font-weight: 400;
-  min-width: 180px; flex: 1 1 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  width: 280px;
+  max-width: 100%;
 }
 
 .r2d-icon {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 15px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
 }
 
-.r2d-btn-wrap { margin-bottom: 20px; display: flex; justify-content: center; }
+.r2d-btn-wrap {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
 .r2d-btn {
-  background: #fff; color: #C0200A;
-  font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 900;
-  letter-spacing: 0.3px; text-decoration: none; border-radius: 10px;
-  padding: 16px 36px; box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
-  cursor: pointer; border: none; max-width: 340px; text-align: center;
+  background: #fff;
+  color: #C0200A;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 18px 40px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
   display: inline-block;
+  box-sizing: border-box;
 }
 
 .r2d-btn:hover {
-  background: #FFE066; color: #B01800;
-  transform: translateY(-2px) scale(1.025);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  background: #FFE066;
+  color: #B01800;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
 }
 
-.r2d-btn:active { transform: translateY(0) scale(0.98); }
+.r2d-btn:active {
+  transform: translateY(-1px);
+}
 
 .r2d-btn-sub {
-  display: block; font-size: 11px; font-weight: 400; color: #E84020; margin-top: 2px;
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #E84020;
+  margin-top: 4px;
 }
 
 .r2d-btn:hover .r2d-btn-sub { color: #B01800; }
 
 .r2d-trust {
-  display: flex; flex-wrap: wrap; gap: 6px 18px;
-  border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 18px;
   justify-content: center;
 }
 
 .r2d-trust-item {
-  display: flex; align-items: center; gap: 6px;
-  color: rgba(255,255,255,0.88); font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.r2d-trust-num { color: #FFE066; font-weight: 700; font-size: 14px; }
+.r2d-trust-num {
+  color: #FFE066;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* МОБАЙЛ — ПОЛНАЯ ЦЕНТРОВКА */
+@media (max-width: 768px) {
+  .r2d-cta {
+    padding: 28px 20px 24px;
+    border-radius: 12px;
+    margin: 20px auto;
+  }
+  
+  .r2d-benefits {
+    gap: 14px;
+  }
+  
+  .r2d-benefits li {
+    width: 100%;
+    max-width: 320px;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 15px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+  
+  .r2d-btn {
+    font-size: 16px;
+    padding: 16px 32px;
+    max-width: 340px;
+  }
+}
 
 @media (max-width: 480px) {
-  .r2d-cta { padding: 26px 18px 22px; border-radius: 12px; margin: 20px auto; }
-  .r2d-benefits li { min-width: 140px; }
-  .r2d-btn { font-size: 14px; padding: 14px 20px; }
+  .r2d-cta {
+    padding: 24px 16px 20px;
+    margin: 16px auto;
+  }
+  
+  .r2d-benefits li {
+    flex-direction: row;
+    gap: 12px;
+    font-size: 14px;
+    min-height: 24px;
+  }
+  
+  .r2d-btn {
+    font-size: 15px;
+    padding: 15px 28px;
+  }
 }
 `;
     document.head.appendChild(style);
     
-    // Заменить плейсхолдер на контент
+    // Контент блока
     var placeholder = document.getElementById('r2d-cta-placeholder');
     var ctaHTML = `
 <div class="r2d-cta">
@@ -271,7 +365,7 @@
     
     placeholder.outerHTML = ctaHTML;
     loadedCTA = true;
-    console.log('✅ CTA блок загружен после скролла');
+    console.log('✅ CTA блок загружен + МОБАЙЛ ФИКС');
   }
   
   // Загрузка при скролле
