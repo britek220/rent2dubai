@@ -6,7 +6,6 @@
   // Флаги загрузки
   var loadedGA4 = false;
   var loadedYM = false;
-  var timerId;
   
   // IDs ваших счетчиков
   var GA4_ID = 'G-KPPMNFELWJ';
@@ -57,39 +56,27 @@
   function loadAnalytics() {
     loadGA4();
     loadYM();
-    clearTimeout(timerId);
     removeListeners();
   }
   
   // Убрать слушатели событий
   function removeListeners() {
     window.removeEventListener('scroll', handleScroll);
-    window.removeEventListener('mousemove', handleMove);
-    window.removeEventListener('touchstart', handleTouch);
-    document.removeEventListener('click', handleClick);
   }
   
-  // Обработчики событий
-  function handleScroll() { loadAnalytics(); }
-  function handleMove() { loadAnalytics(); }
-  function handleTouch() { loadAnalytics(); }
-  function handleClick() { loadAnalytics(); }
+  // Обработчик СКРОЛЛА ТОЛЬКО
+  function handleScroll() { 
+    loadAnalytics(); 
+  }
   
   // ИНИЦИАЛИЗАЦИЯ
   if (navigator.userAgent.indexOf('Yandex') > -1 || navigator.userAgent.indexOf('Googlebot') > -1) {
     // Боты загружают сразу
-    loadAnalytics();
+    loadGA4();
+    loadYM();
   } else {
-    // Пользователи: скролл/движение/касание/клик
+    // ТОЛЬКО СКРОЛЛ
     window.addEventListener('scroll', handleScroll, {passive: true, once: true});
-    window.addEventListener('mousemove', handleMove, {passive: true, once: true});
-    window.addEventListener('touchstart', handleTouch, {passive: true, once: true});
-    document.addEventListener('click', handleClick, {once: true});
-    
-    // Фоллбэк: 3 секунды
-    document.addEventListener('DOMContentLoaded', function() {
-      timerId = setTimeout(loadAnalytics, 3000);
-    });
   }
   
 })();</script><noscript><div><img src="https://mc.yandex.ru/watch/107717801" style="position:absolute; left:-9999px;" alt=""></div></noscript><meta name="yandex-verification" content="ebd728a34fdf7a3b"><meta name="google-site-verification" content="LvNd79bj77PSXlqNBKv4IMfU3LIAYOTb8epY6k9TK78"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"></head><body class="tags-template"><header class="top js-header"><a class="logo" href="https://rent2dubai.ru/">Rent2Dubai</a></header><main class="page page--tags"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>Tags</h1><p class="page__desc">Collection of all 0 tags</p></div></header></div><div class="wrapper"><ul class="feed feed--grid"></ul></div></main><footer class="footer"><div class="wrapper"><div class="footer__copyright"><p>Rent2Dubai 2026 год</p></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://rent2dubai.ru/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://rent2dubai.ru/assets/js/scripts.min.js?v=d0fc1030089a37f93a2d51bf6d07565c"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
